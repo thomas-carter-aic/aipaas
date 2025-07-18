@@ -1,0 +1,27 @@
+version: 2.1
+setup: true
+orbs:
+  path-filtering: circleci/path-filtering@1.0.0
+
+workflows:
+  always-run:
+    jobs:
+      - path-filtering/filter:
+          name: check-updated-files
+          mapping: |
+            apps/web/.* run-js-ts true
+            packages/.* run-js-ts true
+            configs/.* run-js-ts true
+            tools/.* run-js-ts true
+            libs/db/.* run-js-ts true
+            libs/utils/.* run-js-ts true
+            services/.* run-js-ts true
+            scripts/.* run-js-ts true
+            tests/.* run-js-ts true
+            tools/.* run-js-ts true
+            pnpm-workspace.yaml run-js-ts true
+            package.json run-js-ts true
+            turbo.json run-js-ts true
+            tsconfig.json run-js-ts true
+          base-revision: v1
+          config-path: .circleci/continue_config.yml

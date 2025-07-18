@@ -1,0 +1,59 @@
+{
+  "rushVersion": "5.136.0",
+  "pnpmVersion": "9.12.0",
+  "nodeSupportedVersionRange": ">=16.0.0",
+  "projects": [
+    {
+      "packageName": "web",
+      "projectFolder": "apps/web",
+    },
+    {
+      "packageName": "dashboard",
+      "projectFolder": "apps/dashboard",
+    },
+    {
+   "packageName": "admin",
+   "projectFolder": "apps/admin",
+ },
+ {
+   "packageName": "ui-components",
+   "projectFolder": "packages/ui-components",
+ },
+ {
+   "packageName": "shared-utils",
+   "projectFolder": "packages/shared-utils",
+ },
+ {
+   "packageName": "auth-service",
+   "projectFolder": "services/auth-service",
+ },
+ {
+   "packageName": "payment-service",
+   "projectFolder": "services/payment-service",
+ },
+ {
+   "packageName": "analytics-service",
+   "projectFolder": "services/analytics-service",
+ },
+ {
+   "packageName": "realtime-service",
+   "projectFolder": "services/realtime-service",
+ },
+ {
+   "packageName": "billing-service",
+   "projectFolder": "services/billing-service",
+ },
+ {
+   "packageName": "project-service",
+   "projectFolder": "services/project-service",
+ },
+ {
+   "packageName": "communication-service",
+   "projectFolder": "services/communication-service",
+ },
+ {
+   "packageName": "ai-service",
+   "projectFolder": "services/ai-service",
+ }
+]
+}

@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@libs/*": ["packages/libs/*", "libs/db/*"],
+      "@services/*": ["services/*"],
+      "@scripts/*": ["scripts/*"],
+      "@tests/*": ["tests/*"],
+      "@configs/*": ["configs/*"],
+      "@tools/*": ["tools/*"]
+    },
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true
+  },
+  "include": ["apps/**/*", "packages/**/*", "configs/**/*", "tools/**/*", "libs/db/**/*", "services/**/*", "scripts/**/*", "tests/**/*"],
+  "exclude": ["node_modules", "dist", "build"]
+}

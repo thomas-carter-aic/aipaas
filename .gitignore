@@ -1,0 +1,45 @@
+# Node.js / pnpm
+node_modules/
+.pnpm-store/
+dist/
+build/
+
+# Java / Gradle
+.gradle/
+build/
+*.jar
+*.war
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+*.egg-info/
+
+# Go
+/bin/
+/vendor/
+
+# C++ / Bazel
+bazel-*
+*.o
+*.a
+
+# R
+*.RData
+*.Rhistory
+
+# Vault
+vault/
+
+# General
+.env
+*.log
+coverage/
+.DS_Store
+test-results/
+suggestions.json

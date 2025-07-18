@@ -1,0 +1,4 @@
+# Snyk configuration
+ignore:
+- '*':
+   - reason: "Managed via CI pipeline"

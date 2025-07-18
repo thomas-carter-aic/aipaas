@@ -1,0 +1,86 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@5.2.0
+
+parameters:
+  run-js-ts:
+    type: boolean
+    default: false
+  vercel-token:
+    type: string
+    default: ""
+
+jobs:
+  js-ts-build:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install:
+          node-version: '20'
+      - run:
+          name: Install pnpm
+          command: npm install -g pnpm
+      - restore_cache:
+          keys:
+            - pnpm-cache-{{ .Branch }}-{{ checksum "pnpm-lock.yaml" }}
+            - pnpm-cache-{{ .Branch }}-
+      - run:
+          name: Install Dependencies
+          command: pnpm install
+      - run:
+          name: Build
+          command: pnpm run build
+      - run:
+          name: Format
+          command: pnpm run format
+      - run:
+          name: Lint
+          command: pnpm run lint
+      - run:
+          name: Test
+          command: pnpm run test
+      - save_cache:
+          key: pnpm-cache-{{ .Branch }}-{{ checksum "pnpm-lock.yaml" }}
+          paths:
+            - node_modules
+            - .turbo/cache
+            - node_modules/.cache/turbo
+            - packages/libs/utils/dist
+            - libs/db/db-postgres/dist
+            - services/api/dist
+            - tests/utils/dist
+            - configs/eslint
+            - configs/prettier
+            - tools/cli/dist
+            - scripts/deploy
+
+  deploy-web:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install:
+          node-version: '20'
+      - run:
+          name: Install pnpm
+          command: npm install -g pnpm
+      - run:
+          name: Install Vercel CLI
+          command: pnpm install -g vercel
+      - run:
+          name: Deploy to Vercel
+          command: cd apps/web && vercel --prod --token $VERCEL_TOKEN
+          environment:
+            VERCEL_TOKEN: << pipeline.parameters.vercel-token >>
+
+workflows:
+  js-ts-workflow:
+    when: << pipeline.parameters.run-js-ts >>
+    jobs:
+      - js-ts-build
+      - deploy-web:
+          requires:
+            - js-ts-build
+          filters:
+            branches:
+              only: v1

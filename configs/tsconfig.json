@@ -1,0 +1,17 @@
+{
+"compilerOptions": {
+ "target": "es2020",
+ "module": "esnext",
+ "strict": true,
+ "esModuleInterop": true,
+ "skipLibCheck": true,
+ "forceConsistentCasingInFileNames": true,
+ "moduleResolution": "node",
+ "jsx": "react-jsx",
+ "baseUrl": "..",
+ "paths": {
+   "@shared/*": ["packages/shared-utils/*"]
+ }
+},
+"include": ["apps/**/*", "packages/**/*", "services/**/*"]
+}
